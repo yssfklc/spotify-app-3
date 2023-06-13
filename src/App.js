@@ -11,9 +11,10 @@ function App() {
   // post();
 var client_id = 'b4c2a14fb8734fff86e81c01ff04ab40';
 var client_secret = 'a3e2b55d47854f0582e8c767b2bf04e1';
-var access_token='BQD60oFtOHgWJYAXZe7l-WGaBsK_RPjlfKnTpOBLpaiUV_7H3njcBtM-qGDyWSsxjg26CCVyLKYyEv3gN5WNqrof7KYUOUh_rK-bZDg7iJ_mObRUmSev';
+var access_token='BQDKBhQFyJ6GT--aYfBAqYPhCh2aIF53phrcBVIKGtN4lHXxbjh9U9MZZP7pg3S5G4Vc5EwLI3gaLjOgZD2lhcNBRalJ0UJdjQBDMoeltuXnHkkiPMc';
 const [isTrue, setIsTrue] = useState(false);
 const [listfortrack, setTrack] = useState();
+const [data, setData]=useState({})
 const n=[];
 const i=[];
 
@@ -40,62 +41,55 @@ const i=[];
 // console.log(post());
 
 
-//get artist
-// async function getArtist(){
-//   const data=await fetch('https://api.spotify.com/v1/artists/4Z8W4fKeB5YxbusRsdQVPb',{
-//     headers: {'Authorization': 'Bearer ' + 'BQD60oFtOHgWJYAXZe7l-WGaBsK_RPjlfKnTpOBLpaiUV_7H3njcBtM-qGDyWSsxjg26CCVyLKYyEv3gN5WNqrof7KYUOUh_rK-bZDg7iJ_mObRUmSev'}
-//   })
+// get artist
+async function getArtist(){
+  const data=await fetch('https://api.spotify.com/v1/artists/4Z8W4fKeB5YxbusRsdQVPb',{
+    headers: {Authorization : `Bearer ${access_token}`}
+  })
 
-//   console.log(await data.json());
-//   return (await data);
-// }
+  const json=await data.json();
+  
+  return json;
+}
 
 
-  async function getSearch(){
-    try {
-      const q='remaster%2520track%3ADoxy%2520artist%3AMiles%2520Davis';
-      const type='type=artist';
-      const response = await fetch(('https://api.spotify.com/v1/search?q=' + q + '&' + type),{ 
-      headers: {'Authorization': 'Bearer ' + 'BQAwT5IHKBFUHAkNzqhKJ6MT0w_Bx80gKIScjZEVpL8qVBDm9SQUqtaYWJIPYrywBeXHbMbdJTki3LYkMjEaxbMwbcoGaXUzgQpbvXzTAUzKdGWOR71p'}
-      }
+  // async function getSearch(){
+  //   try {
+  //     const q='remaster%2520track%3ADoxy%2520artist%3AMiles%2520Davis';
+  //     const type='type=artist';
+  //     const response = await fetch(('https://api.spotify.com/v1/search?q=' + q + '&' + type),{ 
+  //     headers: {Authorization : `Bearer ${access_token}`}
+      
+  //     }
      
-    )
-    if(response.ok){
-      const jsonData = await response.json();
+  //   )
+  //   if(response.ok){
+  //     const jsonData = await response.json();
       
-      const id= jsonData.artists.items[0].id;
-      for( const item of jsonData.artists.items){
-        const secondResponse=await fetch(('https://api.spotify.com/v1/artists/' + item.id),{
-      headers: {'Authorization': 'Bearer ' + 'BQAwT5IHKBFUHAkNzqhKJ6MT0w_Bx80gKIScjZEVpL8qVBDm9SQUqtaYWJIPYrywBeXHbMbdJTki3LYkMjEaxbMwbcoGaXUzgQpbvXzTAUzKdGWOR71p'}
-    })
-    if(secondResponse.ok){
-      
-      const secondJsonData = await secondResponse.json();
-      n.push(secondJsonData.name);
-      i.push(secondJsonData.images[0].url);
-      
+  //     const id= jsonData.artists.items[0].id;
+  //     for( const item of jsonData.artists.items){
+  //       const secondResponse=await fetch(('https://api.spotify.com/v1/artists/' + item.id),{
+  //       headers: {Authorization : `Bearer ${access_token}`}
 
-      
-    }
-      }
-      
-  
-    
-    }
-    
-    
-    }catch(err){
-      console.log(err)
-    }
-    
-    
-  };
+  //   })
+  //   if(secondResponse.ok){ 
+  //     const secondJsonData = await secondResponse.json();
+  //     n.push(secondJsonData.name);
+  //     i.push(secondJsonData.images[0].url);  
+  //   }
+  //     }
+  //   }   
+  //   }catch(err){
+  //     console.log(err)
+  //   }
+  // };
   
   
 
-  getSearch();
-  console.log(n);
-  console.log(i);
+  setData(getArtist());
+  console.log(data)
+  // console.log(n);
+  // console.log(i);
   return (
     <div className="App">
       <header className="App-header">
