@@ -1,0 +1,52 @@
+// get artist
+// async function getArtist(){ 
+//   const response=await fetch('https://api.spotify.com/v1/artists/4Z8W4fKeB5YxbusRsdQVPb',{
+//     headers: {Authorization : `Bearer ${access_token}`}
+//   })
+//     const json=await response.json();
+//     setData(json);
+
+// }
+
+
+  // async function getSearch(){
+  //   try {
+  //     const q='remaster%2520track%3ADoxy%2520artist%3AMiles%2520Davis';
+  //     const type='type=artist';
+  //     const response = await fetch(('https://api.spotify.com/v1/search?q=' + q + '&' + type),{ 
+  //     headers: {Authorization : `Bearer ${access_token}`}
+      
+  //     }
+     
+  //   )
+  //   if(response.ok){
+  //     const jsonData = await response.json();
+  //     console.log(jsonData);
+  //     const id= jsonData.artists.items[0].id;
+  //     for( const item of jsonData.artists.items){
+  //       const secondResponse=await fetch(('https://api.spotify.com/v1/artists/' + item.id),{
+  //       headers: {Authorization : `Bearer ${access_token}`}
+
+  //   })
+  //   if(secondResponse.ok){ 
+  //     const secondJsonData = await secondResponse.json();
+  //     n.push(secondJsonData.name);
+  //     i.push(secondJsonData.images[0].url);  
+  //   }
+  //     }
+  //   }   
+  //   }catch(err){
+  //     console.log(err)
+  //   }
+  // };
+  // useEffect(()=>{
+  // getArtist();
+  // getSearch();
+    
+  // }, [])
+  // console.log(data)
+  // console.log(data.id)
+  // console.log(data.name)
+
+  // console.log(n);
+  // console.log(i);
