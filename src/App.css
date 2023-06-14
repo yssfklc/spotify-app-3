@@ -32,15 +32,60 @@
 }
 form {
   padding: 1rem 5rem;
-  background-color: aquamarine;
+  background-color: #282c34;
   border-radius: 2rem;
 }
 .playlist-container {
-  
   width: 300px;
-  background-color: #000;
-
+  background-color: #000
 }
+.list-container{
+  display: flex;
+}
+.default-list{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 50%;
+  /* border-right: 2px solid #000; */
+}
+.my-list-container{
+  width: 50%;
+}
+.my-list{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  
+}
+.card{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid #000;
+  border-radius: 0.3rem;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  margin-right: 0.5rem;
+  width: 10rem;
+  max-height: 20rem;
+}
+.card h2{
+  font-size: 1rem;
+}
+.card p{
+  
+}
+.card img{
+  height: auto;
+}
+.card button{
+  border-radius: 0.5rem; ;
+  background-color: bisque;
+  color: #282c34;
+  margin-top: 1rem;
+}
+
 
 @keyframes App-logo-spin {
   from {

@@ -14,6 +14,7 @@ var client_secret = 'a3e2b55d47854f0582e8c767b2bf04e1';
 const [access_token, setAccess_token]=useState('');
 const [value, setValue]=useState('');
 const [albums, setAlbums]=useState([])
+const [myList, setMyList]=useState([])
 
 
 useEffect(()=>{
@@ -53,12 +54,36 @@ useEffect(()=>{
         headers:{Authorization: `Bearer ${access_token}`}
       })
       const newData= await response.json();
-      setAlbums([...albums, newData.items])
+      setAlbums([...albums, newData.items]);
+      console.log(albums);
     }
    
     getSearchRequest();
-    console.log(albums);
   }
+  const AddList=(e)=>{
+    
+    e.preventDefault();
+    console.log(e.target.value)
+    albums[0].map((album)=>{
+      if(album.id==e.target.value){
+        console.log('lale')
+       setMyList([...myList, album])
+       console.log(myList)
+      }
+    })
+
+  }
+  const RemoveList=(e)=>{
+    e.preventDefault();
+
+    setMyList(myList.filter((item)=>item.id!==e.target.value))
+
+  }
+  const submitList=(e)=>{
+    e.preventDefault();
+
+  }
+
   return (
     <div className="App">
       <div className='search-container'>
@@ -67,20 +92,33 @@ useEffect(()=>{
           <button onClick={(e)=>handleClick(e)} type='submit' >Search</button>
         </form>
       </div>
+      {albums.length==[]?null:(<h2>Albums</h2>)}
       <div className='list-container'>
         <div className='default-list'>
-          <div className='card'>
-            <h2>test1</h2>
-            <p>test1</p>
-            <img/>
-          </div>
+          {albums.length==[]?'Loading':albums[0].map((album)=>{
+           return (<div className='card' >
+              <h2>{album.name}</h2>
+              <p>{album.type}</p>
+              <img src={album.images[1].url}/>
+              <button type='submit' value={album.id} onClick={(e)=>AddList(e)} >Add to My List</button>
+            </div>)
+          })}
+          
         </div>
-        <div className='my-list'>
-        <div className='card'>
-            <h2>test1</h2>
-            <p>test1</p>
-            <img/>
+        <div className='my-list-container'>
+          <h2>My List</h2>
+          <div className='my-list'>
+          { myList.map((item)=>{
+           return (<div className='card' >
+              <h2>{item.name}</h2>
+              <p>{item.type}</p>
+              <img src={item.images[1].url}/>
+              <button type='submit' value={item.id} onClick={(e)=>RemoveList(e)} >Remove From My List</button>
+            </div>)
+          })}
           </div>
+       
+          <button type='submit' onClick={(e)=>submitList(e)} >Save My List</button>
         </div>
       </div>
       
