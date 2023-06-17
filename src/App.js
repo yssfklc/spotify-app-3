@@ -9,8 +9,8 @@ import TrackList from './TrackList.js'
 function App() {
   
   // post();
-var client_id = 'b4c2a14fb8734fff86e81c01ff04ab40';
-var client_secret = 'a3e2b55d47854f0582e8c767b2bf04e1';
+var client_id = '';
+var client_secret = '';
 const [access_token, setAccess_token]=useState('');
 const [value, setValue]=useState('');
 const [albums, setAlbums]=useState([])
