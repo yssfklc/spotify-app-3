@@ -23,7 +23,7 @@ useEffect(()=>{
       method:"POST",
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
-        'Authorization': 'Basic ' + 'YjRjMmExNGZiODczNGZmZjg2ZTgxYzAxZmYwNGFiNDA6YTNlMmI1NWQ0Nzg1NGYwNTgyZThjNzY3YjJiZjA0ZTE='
+        'Authorization': 'Basic ' + ''
       },
       body:'grant_type=client_credentials'
     
